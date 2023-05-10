@@ -1,0 +1,35 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - dataviz
+
+  web:
+    build: .
+    # command: mvn compile exec:java -Dexec.cleanupDaemonThreads=false
+    command: tail -F /dev/null
+    volumes:
+      - .:/code
+    ports:
+      - 8080:8080
+    networks:
+      - dataviz
+
+networks:
+  dataviz:
+    driver: bridge
+
+volumes:
+    postgres:
