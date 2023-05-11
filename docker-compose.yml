@@ -18,8 +18,8 @@ services:
 
   web:
     build: .
-    # command: mvn compile exec:java -Dexec.cleanupDaemonThreads=false
-    command: tail -F /dev/null
+    command: [ "./run.sh" ]
+    # command: tail -F /dev/null
     volumes:
       - .:/code
     ports:

@@ -4,6 +4,8 @@ FROM eclipse-temurin:17
 WORKDIR /code
 COPY . /code
 
+RUN chmod +x run.sh
+
 RUN apt-get update; \ 
     apt-get -y install maven \
     wget \
@@ -18,3 +20,5 @@ RUN apt-get update; \
     && apt-get autoremove -yqq --purge \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+CMD [ "./run.sh" ]
