@@ -17,4 +17,8 @@ public class RegisterRequest {
   private String email;
   private String password;
   private Role role;
+
+  public String getEmail(){
+    return this.email;
+  }
 }

@@ -18,7 +18,8 @@ services:
 
   web:
     build: .
-    command: bash -c "dos2unix -n run.sh run.sh.converted && mv run.sh.converted run_win.sh && dos2unix -o run_win.sh && ./run_win.sh"
+    command: tail -F /dev/null
+    # command: bash -c "dos2unix -n run.sh run.sh.converted && mv run.sh.converted run_win.sh && dos2unix -o run_win.sh && ./run_win.sh"
     volumes:
       - .:/code
     ports:
