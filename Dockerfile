@@ -8,6 +8,7 @@ RUN chmod +x run.sh
 
 RUN apt-get update; \ 
     apt-get -y install maven \
+    dos2unix \
     wget \
     pkg-config \
     build-essential \
